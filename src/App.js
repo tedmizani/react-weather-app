@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+const api = {
+  key: "69c0932e1cd83a56350c6709cbbfebd0",
+  base: "https://api.openweathermap.org/data/2.5/"
+}
+function App () {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const dateBuilder = (d) => {
+  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    let day = days[d.getDay()];
+    let date = d.getDate();
+    let month = months[d.getMonth()];
+    let year = d.getFullYear();
+
+    return `${day} ${date} ${month} ${year}`
 }
 
-export default App;
+
+  return (
+    <div className='app'>
+      <main>
+        <div className="search-box">
+          <input type="text"
+          className="search-bar"
+          placeholder="search...">
+
+          </input>
+        </div>
+        <div className="location-box">
+          <div className="location">Toronto, CA</div>
+          <div className="date">{dateBuilder(new Date())}</div>
+        </div>
+        <div className="weather-box">
+          <div className="temp">
+            15°c
+          </div>
+        </div>
+      </main>
+    </div>
+  )
+}
+
+export default App
